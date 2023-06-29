@@ -1,3 +1,33 @@
+export const sunLogo = (canvaIconContainer)=> {
+  canvaIconContainer.className="canvaIconContainer"
+  let rays = document.createElement('div');
+  rays.id = 'rays';
+  rays.className = 'rays';
+  let sun = document.createElement('div');
+  sun.id = 'sun';
+  sun.className = 'sun';
+ 
+  canvaIconContainer.append(rays);
+  canvaIconContainer.append(sun);
+      
+
+}
+// still to do 
+export const moonLogo = (canvaIconContainer)=> {
+  canvaIconContainer.className="canvaIconContainer"
+/*   <div id="star1" class="star"></div>
+  <div id="moon"></div>
+  <div id="star2" class="star"></div>
+  <div id="star3" class="star"></div> */
+ 
+      
+
+}
+
+
+
+
+
 //logo canvas
 const canvasElements = document.querySelectorAll('.logo');
 const ctxArray = [];

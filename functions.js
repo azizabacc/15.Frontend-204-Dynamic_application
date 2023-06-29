@@ -32,8 +32,8 @@ export const timestampConvertor = (timestamp) =>{
           const temp = dataList[i].main.temp;
           const windSpeed = dataList[i].wind.speed;
           const date = dt_txt.slice(0, 10);
-      
-          // Calculer la moyenne de la température par jour
+  
+          // mean temp per day
           if (tempByDay[date]) {
             tempByDay[date].sum += temp;
             tempByDay[date].count++;
@@ -44,7 +44,7 @@ export const timestampConvertor = (timestamp) =>{
             };
           }
       
-          // Calculer la moyenne de la vitesse du vent par jour
+          // mean wind speed per day
           if (windSpeedByDay[date]) {
             windSpeedByDay[date].sum += windSpeed;
             windSpeedByDay[date].count++;
@@ -60,6 +60,8 @@ export const timestampConvertor = (timestamp) =>{
         const averageWindSpeedByDay = {};  */
       
         for (const date in tempByDay) {
+          console.log("date "+date);
+
           const averageTemp = (tempByDay[date].sum / tempByDay[date].count).toFixed(1);
           averageTempByDay[date] = averageTemp;
         }
@@ -70,6 +72,31 @@ export const timestampConvertor = (timestamp) =>{
         }
       
       
+      }
+    export  const infoPerDay = (datalist) => {
+        const dataByDay = {};
+      
+        for (let i = 0; i < datalist.length; i++) {
+          const dt_txt = datalist[i].dt_txt;
+          const temp = datalist[i].main.temp;
+          const windSpeed = datalist[i].wind.speed;
+          const weather = datalist[i].weather[0].description
+          const date = dt_txt.slice(0, 10);
+          const time = dt_txt.slice(11, 16);
+      
+          if (!dataByDay[date]) {
+            dataByDay[date] = [];
+          }
+      
+          dataByDay[date].push({
+            time,
+            temp,
+            windSpeed,
+            weather,
+          });
+        }
+      
+        return dataByDay;
       }
   export  const weatherFont = (weather) =>{
         let font ='';
@@ -126,3 +153,5 @@ export const timestampConvertor = (timestamp) =>{
         }
         return font
     } 
+
+    

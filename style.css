@@ -1,4 +1,20 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500&display=swap");
+@keyframes sunRotate {
+  from {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(359deg);
+    -moz-transform: rotate(359deg);
+    -ms-transform: rotate(359deg);
+    -o-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
 * {
   margin: 0;
   padding: 0;
@@ -6,15 +22,19 @@
 
 @media screen and (max-width: 800px) {
   body {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    align-items: center;
+    background: rgb(84, 190, 251);
+    background: radial-gradient(circle, rgb(84, 190, 251) 0%, rgb(51, 101, 138) 100%);
+  }
+  body header {
     background: -webkit-linear-gradient(#55C1FF, #33658A);
     background: -moz-linear-gradient(#55C1FF, #33658A);
     background: -ms-linear-gradient(#55C1FF, #33658A);
     background: -o-linear-gradient(#55C1FF, #33658A);
     background: linear-gradient(#55C1FF, #33658A);
-    height: 100vh;
-    width: 100vw;
-  }
-  body header {
     color: hsl(0, 0%, 100%);
     display: flex;
     flex-direction: column;
@@ -59,32 +79,154 @@
     justify-content: space-around;
     width: 100vw;
   }
-  body main {
-    color: hsl(180, 5%, 19%);
+  body header #headerData .sunriseContainer .canvaIconContainer .sun {
+    width: 33px;
+    height: 33px;
+    position: absolute;
+    z-index: 1;
+    background: -webkit-linear-gradient(#FEC601, #EA7317);
+    background: -moz-linear-gradient(#FEC601, #EA7317);
+    background: -ms-linear-gradient(#FEC601, #EA7317);
+    background: -o-linear-gradient(#FEC601, #EA7317);
+    background: linear-gradient(#FEC601, #EA7317);
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    -ms-border-radius: 50px;
+    -o-border-radius: 50px;
+    border-radius: 50px;
+    animation: sunRotate 10s infinite linear;
+    -webkit-transform: rotate(20deg);
+    -moz-transform: rotate(20deg);
+    -ms-transform: rotate(20deg);
+    -o-transform: rotate(20deg);
+    transform: rotate(20deg);
   }
-  body main #resumecardDisplayer {
-    display: flex;
-    flex-direction: column;
+  body header #headerData .sunriseContainer .canvaIconContainer .rays {
+    width: 33px;
+    height: 33px;
+    background: #FEC601;
+    z-index: 0;
+    position: absolute;
+    -webkit-transform: rotate(20deg);
+    -moz-transform: rotate(20deg);
+    -ms-transform: rotate(20deg);
+    -o-transform: rotate(20deg);
+    transform: rotate(20deg);
+    animation: sunRotate 10s infinite linear;
   }
-  body main #resumecardDisplayer .resumeCardContainer {
+  body header #headerData .sunriseContainer .canvaIconContainer .rays:after {
+    content: "";
+    width: 33px;
+    height: 33px;
+    background: #FEC601;
+    z-index: 0;
+    position: absolute;
+    -webkit-transform: rotate(40deg);
+    -moz-transform: rotate(40deg);
+    -ms-transform: rotate(40deg);
+    -o-transform: rotate(40deg);
+    transform: rotate(40deg);
+  }
+  main {
+    margin: 1vw;
+    background: -webkit-linear-gradient(#FFFFFF, #ECE4B7);
+    background: -moz-linear-gradient(#FFFFFF, #ECE4B7);
+    background: -ms-linear-gradient(#FFFFFF, #ECE4B7);
+    background: -o-linear-gradient(#FFFFFF, #ECE4B7);
+    background: linear-gradient(#FFFFFF, #ECE4B7);
+  }
+  main #nowPrediction {
+    padding: 2vw;
+    border: solid #607D8B;
+    background-color: #efeeeb;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+  }
+  main #nowPrediction .dateHourResumeCard {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    height: 25vh;
-    width: 100vw;
+    justify-content: space-between;
+  }
+  main #nowPrediction .dateHourResumeCard h1 {
+    color: #33658A;
+  }
+  main #nowPrediction .dateHourResumeCard h2 {
+    color: #7792AF;
+  }
+  main #nowPrediction .tempContainerResumeCard {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    font-size: 26px;
+    font-weight: bold;
+  }
+  main #nowPrediction .weatherContainerResumeCard {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    font-size: 26px;
+    font-weight: bold;
+  }
+  main #nowPrediction .windContainerResumeCard {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    font-size: 26px;
+    font-weight: bold;
+  }
+  main .titleSection {
+    color: #4e61cd;
+    margin: 15px 0;
+    font-style: italic;
+  }
+  main #resumecardDisplayer {
+    padding: 2vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+    background-color: #A9BBCF;
+  }
+  main #resumecardDisplayer .resumeCardContainer {
+    background-color: #DBE4EE;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #DBE4EE;
+    justify-content: space-around;
+  }
+  main #resumecardDisplayer .resumeCardContainer .tempContainer {
+    display: flex;
+  }
+  main #resumecardDisplayer .resumeCardContainer .windContainer {
+    display: flex;
   }
 }
 @media screen and (min-width: 800px) {
   body {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    align-items: center;
+  }
+  body header {
     background: -webkit-linear-gradient(#55C1FF, #33658A);
     background: -moz-linear-gradient(#55C1FF, #33658A);
     background: -ms-linear-gradient(#55C1FF, #33658A);
     background: -o-linear-gradient(#55C1FF, #33658A);
     background: linear-gradient(#55C1FF, #33658A);
-    height: 100vh;
-    width: 100vw;
-  }
-  body header {
     color: hsl(0, 0%, 100%);
     display: flex;
     align-items: center;
@@ -96,7 +238,7 @@
   body header .topHeader {
     display: flex;
     width: 100vw;
-    justify-content: center;
+    justify-content: space-evenly;
   }
   body header .topHeader h1 {
     font-size: 6rem;
@@ -108,14 +250,13 @@
     display: flex;
     align-items: center;
     width: 47vw;
-    justify-content: space-evenly;
+    justify-content: center;
   }
   body header #inputContainer #citySelect {
     font-size: 1.4rem;
     padding: 1rem 2.5rem;
     border-radius: 0.3rem;
-    /* color: var(--text-color); */
-    /* background-color: var(--search-bar-color); */
+    margin-right: 1vw;
     border: none;
   }
   body header #inputContainer #submitCity {
@@ -129,34 +270,92 @@
     align-items: center;
   }
   body main {
-    padding: 2vh;
+    padding: 4vh;
     color: hsl(180, 5%, 19%);
     display: flex;
     justify-content: space-between;
     flex-direction: column;
   }
-  body main #resumecardDisplayer {
+  body main #nowPrediction {
+    padding: 2vw;
+    border: solid #607D8B;
+    background-color: #efeeeb;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+  }
+  body main #nowPrediction .dateHourResumeCard {
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  body main #nowPrediction .dateHourResumeCard h1 {
+    color: #33658A;
+  }
+  body main #nowPrediction .dateHourResumeCard h2 {
+    color: #7792AF;
+  }
+  body main #nowPrediction .tempContainerResumeCard {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    font-size: 26px;
+    font-weight: bold;
+  }
+  body main #nowPrediction .weatherContainerResumeCard {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    font-size: 26px;
+    font-weight: bold;
+  }
+  body main #nowPrediction .windContainerResumeCard {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    font-size: 26px;
+    font-weight: bold;
+  }
+  body main .titleSection {
+    color: #4e61cd;
+    margin: 15px 0;
+    font-style: italic;
+    font-size: 3vw;
+  }
+  body main #resumecardDisplayer {
+    padding: 2vw;
+    display: flex;
+    flex-direction: row;
     justify-content: space-evenly;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+    background-color: #A9BBCF;
   }
   body main #resumecardDisplayer .resumeCardContainer {
+    background-color: #DBE4EE;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    background-color: #DBE4EE;
+    justify-content: space-around;
+    width: 14vw;
+    height: 22vh;
   }
-  body main #resumecardDisplayer .resumeCardContainer #dateHour {
-    font-size: 2rem;
-  }
-  body main #resumecardDisplayer .resumeCardContainer #tempContainer {
+  body main #resumecardDisplayer .resumeCardContainer .tempContainer {
     display: flex;
-    width: 100%;
-    justify-content: space-evenly;
   }
-  body main #resumecardDisplayer .resumeCardContainer #windContainer {
+  body main #resumecardDisplayer .resumeCardContainer .windContainer {
     display: flex;
-    width: 100%;
-    justify-content: space-evenly;
   }
 }
 

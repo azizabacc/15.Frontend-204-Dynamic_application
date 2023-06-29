@@ -1,6 +1,6 @@
 
 //Plot function 
-export const plot = (dataX,dataY,div,color) =>{
+export const plot = (dataX,dataY,div,color,tit,xtit,ytit) =>{
     var trace = {
         x: dataX,
         y: dataY,
@@ -13,9 +13,23 @@ export const plot = (dataX,dataY,div,color) =>{
   }
 };
     var layout = { 
-        title: 'Responsive to window\'s size!',
-        font: {size: 18}
-      };
+        title: tit,
+        xaxis: {
+            title: xtit,
+            titlefont: {
+              family: 'Arial, sans-serif',
+              size: 18,
+              color: 'black'
+            }},
+            yaxis: {
+                title: ytit,
+                titlefont: {
+                  family: 'Arial, sans-serif',
+                  size: 18,
+                  color: 'black'
+                }}
+
+      } 
 var data = [ trace ];
 var config = {responsive: true}
    Plotly.newPlot(div, data,layout,config,{scrollZoom: true},{editable: true});

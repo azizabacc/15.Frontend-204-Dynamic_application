@@ -8,16 +8,49 @@ $body-font: "Roboto", sans-serif;
 
 $text-color: hsl(180, 5%, 19%); // Couleur principale de texte
 $text-color-light: hsl(0, 0%, 100%); // Couleur de texte sur fond sombre
+$white: #FFFFFF;
 $skyLight: #55C1FF;
-  $skyDark: #33658A;
+$skyDark: #33658A;
+$sunLight: #FEC601;
+$sunDark: #EA7317;
+$cloudLight: #DBE4EE;
+$cloudDark: #A9BBCF;
+$darkCloudLight: #90A7BF;
+$darkCloudDark: #7792AF;
+$raindrop: #0A81D1;
+$nightLight: #ECE4B7;
+$nightDark: #BFADA3;
 
-@mixin background($colour1, $colour2) {
+  @mixin background($colour1, $colour2) {
     background: -webkit-linear-gradient($colour1, $colour2);
     background: -moz-linear-gradient($colour1, $colour2);
     background: -ms-linear-gradient($colour1, $colour2);
     background: -o-linear-gradient($colour1, $colour2);
     background: linear-gradient($colour1, $colour2);
  }
+  @mixin border-radius($radius) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -ms-border-radius: $radius;
+    -o-border-radius: $radius;
+    border-radius: $radius;
+  }
+  @mixin rotate($degrees) {
+    -webkit-transform: rotate($degrees);
+    -moz-transform: rotate($degrees);
+    -ms-transform: rotate($degrees);
+    -o-transform: rotate($degrees);
+    transform: rotate($degrees);
+  }
+
+ @keyframes sunRotate {
+    from {
+      @include rotate(0deg);
+    }
+    to {
+      @include rotate(359deg);
+    }
+  }
 
 
 *{
@@ -30,10 +63,14 @@ $skyLight: #55C1FF;
 
       
 body{
-    @include background($skyLight,$skyDark);
+    display: flex;
     height: 100vh;
     width: 100vw;
+    align-items: center;
+    background: rgb(84,190,251);
+background: radial-gradient(circle, rgba(84,190,251,1) 0%, rgba(51,101,138,1) 100%);
     header{
+        @include background($skyLight,$skyDark);
         color: hsl(0, 0%, 100%);
         display: flex;
         flex-direction: column;
@@ -64,6 +101,7 @@ body{
             align-items: center;
             width: 70vw;
             justify-content: space-evenly;
+         
             #citySelect{
                 font-size: 1rem;
                 padding: 1rem 0.5rem;
@@ -74,38 +112,143 @@ body{
             }
 
         }
+
+          
+  
         #headerData{
             display: flex;
             justify-content: space-around;
             width: 100vw;
+            .sunriseContainer{
+                .canvaIconContainer{
+                    .sun{    
+                        width: 33px;
+                        height: 33px;
+                        position: absolute;
+                        z-index: 1;
+                        @include background($sunLight, $sunDark) ;
+                        @include border-radius(50px) ;
+                        animation: sunRotate 10s infinite linear;
+                        @include rotate(20deg);
+
+                    }
+                    .rays {
+                        width: 33px;
+                        height: 33px;
+                        background: $sunLight;
+                        z-index: 0;
+                        position: absolute;
+
+                        @include rotate(20deg);
+                        animation: sunRotate 10s infinite linear;
+                      }
+                      .rays:after {
+                        content: "";
+                        width: 33px;
+                        height: 33px;
+                        background: $sunLight;
+                        z-index: 0;
+                        position: absolute;
+                        @include rotate(40deg);
+                      }
+                
+            }}
+         
+            }
+
+
+                
+    }
+            
        
         }
-    }
+    
     main{
-        color: $text-color;
+        margin: 1vw;
+        @include background($white,$nightLight );
+        #nowPrediction{
+            padding: 2vw;
+            border: solid #607D8B;
+            background-color: #efeeeb;
+            @include border-radius(5px);
+            .dateHourResumeCard {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                h1{
+                    color: $skyDark
+                }
+                h2{
+                    color: $darkCloudDark;
+                }
+              }
+            .tempContainerResumeCard{
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-end;
+                font-size: 26px;
+                font-weight: bold;
+            }
+            .weatherContainerResumeCard{
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-end;
+                font-size: 26px;
+                font-weight: bold;
+
+            }
+            .windContainerResumeCard{
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-end;
+                font-size: 26px;
+                font-weight: bold;
+
+            }
+            }
+            .titleSection{
+                color: #4e61cd;
+                margin: 15px 0;
+                font-style: italic;
+            }
+         
+
         #resumecardDisplayer{
+            padding: 2vw;
             display: flex;
             flex-direction: column;
+            justify-content: space-evenly;
+            @include border-radius(5px);
+            background-color: $cloudDark;
             .resumeCardContainer{
-
+                background-color: $cloudLight;
+                @include border-radius(5px);
                 display: flex;
-                flex-direction: column;
+                flex-direction: row;
                 align-items: center;
-                height: 25vh;
-                width: 100vw;
+                background-color: #DBE4EE;
+                justify-content: space-around;
+            .tempContainer{
+                display: flex;
+            }
+            .windContainer{
+                display: flex;
+            }
+               
                 
             }
         }
     }
+}
 
-}
-}
 @media screen and (min-width: 800px) {
     body{
-        @include background($skyLight, $skyDark);        
+        display: flex;
         height: 100vh;
         width: 100vw;
+        align-items: center;
         header{
+            @include background($skyLight, $skyDark);    
             color: $text-color-light;
             display: flex;
             align-items: center;
@@ -116,8 +259,8 @@ body{
             .topHeader{
                 display: flex;
                 width: 100vw;
-                justify-content: center;
-              
+            
+                justify-content: space-evenly;
                     h1{
                         font-size: 6rem;
                     }
@@ -131,13 +274,12 @@ body{
       
                 align-items: center;
                 width: 47vw;
-                justify-content: space-evenly;
+                justify-content: center;
     #citySelect{
         font-size: 1.4rem;
         padding: 1rem 2.5rem;
         border-radius: 0.3rem;
-        /* color: var(--text-color); */
-        /* background-color: var(--search-bar-color); */
+        margin-right: 1vw;
         border: none;
 
     }
@@ -155,40 +297,89 @@ body{
                 align-items: center;
    
             }
+
         }
         main{
             
-            padding: 2vh;
+            padding: 4vh;
             color: $text-color;
-           
             display: flex;
             justify-content: space-between;
             flex-direction: column;
-            #resumecardDisplayer{
-                display: flex;
-                justify-content: space-evenly;
-                .resumeCardContainer{
+            #nowPrediction{
+                padding: 2vw;
+                border: solid #607D8B;
+                background-color: #efeeeb;
+                @include border-radius(5px);
+                .dateHourResumeCard {
                     display: flex;
-                    flex-direction: column;
-                    justify-content: center;
                     align-items: center;
-                    #dateHour{
-                        font-size: 2rem;
+                    justify-content: space-between;
+                    h1{
+                        color: $skyDark
                     }
-                    #tempContainer{
-                        display: flex;
-                        width: 100%;
-                        justify-content: space-evenly;
-                    }  
-                    
-                    #windContainer{
-                        display: flex;
-                        width: 100%;
-                        justify-content: space-evenly;
-                    }  
-                    
+                    h2{
+                        color: $darkCloudDark;
+                    }
+                  }
+                .tempContainerResumeCard{
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: flex-end;
+                    font-size: 26px;
+                    font-weight: bold;
                 }
-            }
+                .weatherContainerResumeCard{
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: flex-end;
+                    font-size: 26px;
+                    font-weight: bold;
+    
+                }
+                .windContainerResumeCard{
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: flex-end;
+                    font-size: 26px;
+                    font-weight: bold;
+    
+                }
+                }
+                .titleSection{
+                    color: #4e61cd;
+                    margin: 15px 0;
+                    font-style: italic;
+                    font-size: 3vw;
+                }
+             
+                #resumecardDisplayer{
+                    padding: 2vw;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-evenly;
+                    @include border-radius(5px);
+                    background-color: $cloudDark;
+                    .resumeCardContainer{
+                        background-color: $cloudLight;
+                        @include border-radius(5px);
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        background-color: #DBE4EE;
+                        justify-content: space-around;
+                        width: 14vw;
+                        height: 22vh;
+                    .tempContainer{
+                        display: flex;
+                    }
+                    .windContainer{
+                        display: flex;
+                    }
+                       
+                        
+                    }
+                }
         }
     
     }
