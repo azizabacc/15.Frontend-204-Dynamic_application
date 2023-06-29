@@ -1,0 +1,197 @@
+// ==== GOOGLE FONTS ====
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500&display=swap");
+
+// ==== VARIABLES SCSS ====
+$body-font: "Roboto", sans-serif;
+
+// ==== Colors ====
+
+$text-color: hsl(180, 5%, 19%); // Couleur principale de texte
+$text-color-light: hsl(0, 0%, 100%); // Couleur de texte sur fond sombre
+$skyLight: #55C1FF;
+  $skyDark: #33658A;
+
+@mixin background($colour1, $colour2) {
+    background: -webkit-linear-gradient($colour1, $colour2);
+    background: -moz-linear-gradient($colour1, $colour2);
+    background: -ms-linear-gradient($colour1, $colour2);
+    background: -o-linear-gradient($colour1, $colour2);
+    background: linear-gradient($colour1, $colour2);
+ }
+
+
+*{
+    margin : 0;
+    padding: 0;
+
+}
+
+@media screen and (max-width: 800px) {
+
+      
+body{
+    @include background($skyLight,$skyDark);
+    height: 100vh;
+    width: 100vw;
+    header{
+        color: hsl(0, 0%, 100%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 4vw;
+        height: 33vh;
+        justify-content: space-between;
+    
+        .topHeader{
+            display: flex;
+            width: 100vw;
+            justify-content: space-between;
+            align-items: center;
+            h1{
+                font-size: 12vw;
+            }
+            .logo{
+                width: 100;
+                height: 100;
+            }
+        }
+        .siteSitation{
+            font-style: italic;
+            text-align: center;
+        }
+        #inputContainer{
+            display: flex;
+            align-items: center;
+            width: 70vw;
+            justify-content: space-evenly;
+            #citySelect{
+                font-size: 1rem;
+                padding: 1rem 0.5rem;
+                border-radius: 0.3rem;
+                /* color: var(--text-color); */
+                /* background-color: var(--search-bar-color); */
+                border: none;
+            }
+
+        }
+        #headerData{
+            display: flex;
+            justify-content: space-around;
+            width: 100vw;
+       
+        }
+    }
+    main{
+        color: $text-color;
+        #resumecardDisplayer{
+            display: flex;
+            flex-direction: column;
+            .resumeCardContainer{
+
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                height: 25vh;
+                width: 100vw;
+                
+            }
+        }
+    }
+
+}
+}
+@media screen and (min-width: 800px) {
+    body{
+        @include background($skyLight, $skyDark);        
+        height: 100vh;
+        width: 100vw;
+        header{
+            color: $text-color-light;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            height: 39vh;
+            justify-content: space-between;
+            padding: 2vw;
+            .topHeader{
+                display: flex;
+                width: 100vw;
+                justify-content: center;
+              
+                    h1{
+                        font-size: 6rem;
+                    }
+                
+            }
+            .siteSitation{
+                font-style: italic;
+            }
+            #inputContainer{
+                display: flex;
+      
+                align-items: center;
+                width: 47vw;
+                justify-content: space-evenly;
+    #citySelect{
+        font-size: 1.4rem;
+        padding: 1rem 2.5rem;
+        border-radius: 0.3rem;
+        /* color: var(--text-color); */
+        /* background-color: var(--search-bar-color); */
+        border: none;
+
+    }
+  #submitCity{
+    font-size: 3rem;
+  }
+          
+            }
+            #headerData{
+                display: flex;
+                justify-content: space-around;
+                width: 100vw;
+                height: 5vh;
+        
+                align-items: center;
+   
+            }
+        }
+        main{
+            
+            padding: 2vh;
+            color: $text-color;
+           
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+            #resumecardDisplayer{
+                display: flex;
+                justify-content: space-evenly;
+                .resumeCardContainer{
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    #dateHour{
+                        font-size: 2rem;
+                    }
+                    #tempContainer{
+                        display: flex;
+                        width: 100%;
+                        justify-content: space-evenly;
+                    }  
+                    
+                    #windContainer{
+                        display: flex;
+                        width: 100%;
+                        justify-content: space-evenly;
+                    }  
+                    
+                }
+            }
+        }
+    
+    }
+    }
+
+
