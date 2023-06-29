@@ -1,12 +1,12 @@
 
 import { timestampConvertor , meanTemperature,infoPerDay} from './functions.js';
-import { coordData,resumeDayCard,resumeCard } from './tags.js';
+import { coordData,resumeDayCard,resumeCard ,tagInfoday} from './tags.js';
 import { plot } from './plots.js';
 
 const apiKey ="0ecda526c9c0b753226bce63f940887d"
 let main = document.querySelector('main');
 let header = document.querySelector('header');
-
+const tableContainer = document.querySelector('.table');
   
 
 export const forecast = (lat,lon,averageTempByDay,averageWindSpeedByDay,resumecardDisplayer) =>{ 
@@ -32,9 +32,8 @@ fetch(forecastApi)
   
        
     } 
-// tab of value per day
-  const dailyData = infoPerDay(data.list);
-  console.log(dailyData);
+
+
     console.log(Object.values(averageTempByDay).length);
     for(let j=0;j<Object.values(averageTempByDay).length;j++){
         console.log(Object.keys(averageTempByDay)[j]);
@@ -43,7 +42,7 @@ fetch(forecastApi)
     }
 
   
-
+    tableContainer.append(tagInfoday(data.list));
     
 })
 .catch(error => {

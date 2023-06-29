@@ -1,4 +1,4 @@
-import {  weatherFont, windFont, temperatureFont ,getDayName } from './functions.js';
+import {  weatherFont, windFont, temperatureFont ,getDayName,infoPerDay } from './functions.js';
 import { sunLogo } from './logo.js';
 
 export const resumeCard = (dt_txt,temp,weather,windNb) =>{
@@ -73,7 +73,7 @@ export const resumeDayCard = (dt_txt,temp,windNb) =>{
     let windContainer =  document.createElement('div');
     windContainer.className = 'windContainer'
     let windDesc =  document.createElement('div');
-    windDesc.textContent=windNb.toString();
+    windDesc.textContent=windNb.toString()+' km/h';
     let winFont =  document.createElement('div');
     winFont.innerHTML=windFont(windNb);
     windContainer.append(windDesc);
@@ -88,8 +88,88 @@ return resumeCardContainer;
 
 
 }
+//return table of data per date and hour
+export const tagInfoday = (datalist) => {
+    const dailyData = infoPerDay(datalist);
+    const table = document.createElement('table');
+  
+    for (const date in dailyData) {
+      const data = dailyData[date];
+    
+      table.classList.add('data-table');
+    
+      const tableHeader = document.createElement('thead');
+      const headerRow = document.createElement('tr');
+    
+      const headerDate = document.createElement('th');
+      headerDate.className ="tabHeaderDate";
+      headerDate.textContent = date;
+      headerDate.setAttribute('colspan', '4'); 
+    
+      headerRow.appendChild(headerDate);
+      tableHeader.appendChild(headerRow);
+      table.appendChild(tableHeader);
+    
+      const tableHeader2 = document.createElement('thead');
+      const headerRow2 = document.createElement('tr');
+    
+      const headerTime = document.createElement('th');
+      headerTime.textContent = 'Hour';
+    
+      const headerTemp = document.createElement('th');
+      headerTemp.textContent = 'Temperature (°C)';
+    
+      const headerWindSpeed = document.createElement('th');
+      headerWindSpeed.textContent = 'Wind Speed (km/h)';
 
+      const headerWeather = document.createElement('th');
+      headerWeather.textContent = 'Weather';
+    
+      headerRow2.append(headerTime);
+      headerRow2.append(headerTemp);
+      headerRow2.append(headerWindSpeed);
+      headerRow2.append(headerWeather);
 
+    
+      tableHeader2.append(headerRow2);
+      table.append(tableHeader2);
+    
+     
+      const tableBody = document.createElement('tbody');
+    
+
+      for (let i = 0; i < data.length; i++) {
+        const rowData = data[i];
+    
+        const row = document.createElement('tr');
+    
+        const timeCell = document.createElement('td');
+        timeCell.textContent = rowData.time;
+    
+        const tempCell = document.createElement('td');
+        tempCell.textContent = rowData.temp;
+    
+        const windSpeedCell = document.createElement('td');
+        windSpeedCell.textContent = rowData.windSpeed;
+
+        const weatherCell = document.createElement('td');
+        weatherCell.textContent = rowData.weather;
+    
+        row.append(timeCell);
+        row.append(tempCell);
+        row.append(windSpeedCell);
+        row.append(weatherCell);
+
+    
+        tableBody.appendChild(row);
+      }
+    
+      table.appendChild(tableBody);
+    }
+    
+    return table;
+  }
+  
     
 export const coordData = (headerData,nam, pop, sunri, sunse ) =>{
     headerData.innerHTML='';

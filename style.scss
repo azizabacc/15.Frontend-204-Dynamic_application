@@ -76,7 +76,7 @@ background: radial-gradient(circle, rgba(84,190,251,1) 0%, rgba(51,101,138,1) 10
         flex-direction: column;
         align-items: center;
         padding: 4vw;
-        height: 33vh;
+        height: 83vw;
         justify-content: space-between;
     
         .topHeader{
@@ -220,6 +220,7 @@ background: radial-gradient(circle, rgba(84,190,251,1) 0%, rgba(51,101,138,1) 10
             justify-content: space-evenly;
             @include border-radius(5px);
             background-color: $cloudDark;
+            height: 150vw;
             .resumeCardContainer{
                 background-color: $cloudLight;
                 @include border-radius(5px);
@@ -228,16 +229,40 @@ background: radial-gradient(circle, rgba(84,190,251,1) 0%, rgba(51,101,138,1) 10
                 align-items: center;
                 background-color: #DBE4EE;
                 justify-content: space-around;
+                height: 11vh;
+                .dateHour{
+                    font-size: 20px;
+                    font-weight: bold;
+                    color: blue;
+                }
             .tempContainer{
                 display: flex;
+                width: 19vw;
+              
+                justify-content: space-between;
+                font-size: 19px;
             }
             .windContainer{
                 display: flex;
+                width: 19vw;
+              
+                justify-content: space-between;
+                font-size: 19px;
             }
                
                 
             }
         }
+    }
+    .data-table{
+        width: 100%;
+        background-color: #EA7317;
+        text-align: center;
+    border-collapse: collapse;
+    th, td {
+        padding: 5px;
+        font-size: 12px;
+      }
     }
 }
 
@@ -381,6 +406,23 @@ background: radial-gradient(circle, rgba(84,190,251,1) 0%, rgba(51,101,138,1) 10
                     }
                 }
         }
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            text-align: center;
+          .tabHeaderDate{
+            font-size: 25px;
+          }
+            th, td {
+              padding: 8px;
+           
+              border-bottom: 1px solid #ddd;
+            }
+          
+            th {
+              background-color: #f2f2f2;
+            }}
     
     }
     }

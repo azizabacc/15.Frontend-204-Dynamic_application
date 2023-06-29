@@ -40,7 +40,7 @@
     flex-direction: column;
     align-items: center;
     padding: 4vw;
-    height: 33vh;
+    height: 83vw;
     justify-content: space-between;
   }
   body header .topHeader {
@@ -193,6 +193,7 @@
     -o-border-radius: 5px;
     border-radius: 5px;
     background-color: #A9BBCF;
+    height: 150vw;
   }
   main #resumecardDisplayer .resumeCardContainer {
     background-color: #DBE4EE;
@@ -206,12 +207,34 @@
     align-items: center;
     background-color: #DBE4EE;
     justify-content: space-around;
+    height: 11vh;
+  }
+  main #resumecardDisplayer .resumeCardContainer .dateHour {
+    font-size: 20px;
+    font-weight: bold;
+    color: blue;
   }
   main #resumecardDisplayer .resumeCardContainer .tempContainer {
     display: flex;
+    width: 19vw;
+    justify-content: space-between;
+    font-size: 19px;
   }
   main #resumecardDisplayer .resumeCardContainer .windContainer {
     display: flex;
+    width: 19vw;
+    justify-content: space-between;
+    font-size: 19px;
+  }
+  .data-table {
+    width: 100%;
+    background-color: #EA7317;
+    text-align: center;
+    border-collapse: collapse;
+  }
+  .data-table th, .data-table td {
+    padding: 5px;
+    font-size: 12px;
   }
 }
 @media screen and (min-width: 800px) {
@@ -356,6 +379,22 @@
   }
   body main #resumecardDisplayer .resumeCardContainer .windContainer {
     display: flex;
+  }
+  body .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  body .data-table .tabHeaderDate {
+    font-size: 25px;
+  }
+  body .data-table th, body .data-table td {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+  }
+  body .data-table th {
+    background-color: #f2f2f2;
   }
 }
 
