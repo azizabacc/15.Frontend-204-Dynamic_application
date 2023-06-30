@@ -577,6 +577,27 @@ background: radial-gradient(circle, rgba(84,190,251,1) 0%, rgba(51,101,138,1) 10
                     }
                 }
         }
+        .tableDiv{
+          padding: 4vh;
+        .titleSection{
+              color: #4e61cd;
+    margin: 15px 0;
+    font-style: italic;
+    font-size: 3vw;
+        }
+        .tableMenuBtns{
+          display: flex;
+    justify-content: space-around;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #FF9800;
+    padding: 2vw;
+    .tableBtn{
+    border: 3px solid white;
+    padding: 1.7vw;
+    border-radius: 5px;
+    }
+        }
         .data-table {
             width: 100%;
             border-collapse: collapse;
@@ -597,5 +618,7 @@ background: radial-gradient(circle, rgba(84,190,251,1) 0%, rgba(51,101,138,1) 10
     
     }
   }
+
+        }
 
 

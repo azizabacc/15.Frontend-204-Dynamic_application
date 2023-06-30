@@ -551,20 +551,42 @@
   body main #resumecardDisplayer .resumeCardContainer .windContainer {
     display: flex;
   }
-  body .data-table {
+  body .tableDiv {
+    padding: 4vh;
+  }
+  body .tableDiv .titleSection {
+    color: #4e61cd;
+    margin: 15px 0;
+    font-style: italic;
+    font-size: 3vw;
+  }
+  body .tableDiv .tableMenuBtns {
+    display: flex;
+    justify-content: space-around;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #FF9800;
+    padding: 2vw;
+  }
+  body .tableDiv .tableMenuBtns .tableBtn {
+    border: 3px solid white;
+    padding: 1.7vw;
+    border-radius: 5px;
+  }
+  body .tableDiv .data-table {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
     text-align: center;
   }
-  body .data-table .tabHeaderDate {
+  body .tableDiv .data-table .tabHeaderDate {
     font-size: 25px;
   }
-  body .data-table th, body .data-table td {
+  body .tableDiv .data-table th, body .tableDiv .data-table td {
     padding: 8px;
     border-bottom: 1px solid #ddd;
   }
-  body .data-table th {
+  body .tableDiv .data-table th {
     background-color: #f2f2f2;
   }
 }

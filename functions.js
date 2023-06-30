@@ -97,31 +97,58 @@ export const timestampConvertor = (timestamp) =>{
       
         return dataByDay;
       }
-/*       export  const windInfos = (datalist) => {
-        const dataByDay = {};
+       export  const windInfos = (datalist) => {
+        const windInfos = {};
       
         for (let i = 0; i < datalist.length; i++) {
           const dt_txt = datalist[i].dt_txt;
-          const windDegree = datalist[i].main.deg;
+          const windDegree = datalist[i].wind.deg;
+          const windGust= datalist[i].wind.gust
           const windSpeed = datalist[i].wind.speed;
-          const windGust= datalist[i].weather[0].description
           const date = dt_txt.slice(0, 10);
           const time = dt_txt.slice(11, 16);
       
-          if (!dataByDay[date]) {
-            dataByDay[date] = [];
+          if (!windInfos[date]) {
+            windInfos[date] = [];
           }
       
-          dataByDay[date].push({
+          windInfos[date].push({
             time,
-            temp,
+            windDegree,
             windSpeed,
-            weather,
+            windGust,
+            
           });
         }
       
-        return dataByDay;
-      } */
+        return windInfos;
+      } 
+      export const precipitation=(datalist)=>{
+        const pecipitationInfos = {};
+      const nb = 3;
+      const rainValue = nb.toString()+"h";
+        for (let i = 0; i < datalist.length; i++) {
+          let rain = datalist[i].rain?.[rainValue] ?? 0;
+          const dt_txt = datalist[i].dt_txt;
+          const date = dt_txt.slice(0, 10);
+          const time = dt_txt.slice(11, 16);
+          const humidity = datalist[i].main.humidity;
+          const pressure = datalist[i].main.pressure;
+          if (!pecipitationInfos[date]) {
+            pecipitationInfos[date] = [];
+          }
+      
+          pecipitationInfos[date].push({
+            time,
+            rain,
+            humidity,
+            pressure,
+            
+          });
+        }
+      
+        return pecipitationInfos;
+      }
   export  const weatherFont = (weather) =>{
         let font ='';
         switch(weather){

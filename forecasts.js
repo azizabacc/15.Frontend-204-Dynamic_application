@@ -1,12 +1,14 @@
 
 import { timestampConvertor , meanTemperature,removeChild,infoPerDay} from './functions.js';
-import { coordData,resumeDayCard,resumeCard ,tagInfoday} from './tags.js';
+import { coordData,resumeDayCard,resumeCard ,tagInfoday,windTab, depressionTab} from './tags.js';
 import { plot } from './plots.js';
 
 const apiKey ="0ecda526c9c0b753226bce63f940887d"
 let main = document.querySelector('main');
 let header = document.querySelector('header');
-const tableContainer = document.querySelector('.table');
+let tableContainer1 = document.querySelector('#tab1');
+let tableContainer2 = document.querySelector('#tab2');
+let tableContainer3 = document.querySelector('#tab3');
   
 
 export const forecast = (lat,lon,averageTempByDay,averageWindSpeedByDay,resumecardDisplayer) =>{ 
@@ -33,7 +35,9 @@ fetch(forecastApi)
 
     for(let i=0; i<data.cnt; i++){
           meanTemperature(data.list,averageTempByDay,averageWindSpeedByDay);
-        console.log(data.list[i].main.grnd_level    );
+          const nb = 3;
+          const rainValue = nb.toString()+"h";
+      
   
        
     } 
@@ -45,13 +49,24 @@ while(resumecardDisplayer.firstChild){
         resumecardDisplayer.append(resumeDayCard(Object.keys(averageTempByDay)[j],Object.values(averageTempByDay)[j],Object.values(averageWindSpeedByDay)[j]));
 
     }
-//clean  tableContainer when we look for an other city
-    while( tableContainer.firstChild){
-        tableContainer.removeChild( tableContainer.firstChild)
+//clean  tableContainer1 when we look for an other city
+    while( tableContainer1.firstChild){
+        tableContainer1.removeChild( tableContainer1.firstChild)
     }
-    tableContainer.append(tagInfoday(data.list));
-    
+    tableContainer1.append(tagInfoday(data.list));
+    //clean  tableContainer2 when we look for an other city
+    while( tableContainer2.firstChild){
+        tableContainer2.removeChild( tableContainer2.firstChild)
+    }
+    tableContainer2.append(windTab(data.list));
+        //clean  tableContainer3 when we look for an other city
+        while( tableContainer3.firstChild){
+            tableContainer3.removeChild( tableContainer3.firstChild)
+        }
+        tableContainer3.append(depressionTab(data.list));
+
 })
+
 .catch(error => {
   console.log('There was an error!', error);
 });

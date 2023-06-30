@@ -1,4 +1,4 @@
-import {  weatherFont, windFont, temperatureFont ,getDayName,infoPerDay } from './functions.js';
+import {  weatherFont, windFont, temperatureFont ,getDayName,infoPerDay,windInfos ,precipitation} from './functions.js';
 import { sunLogo ,moonLogo} from './logo.js';
 
 export const resumeCard = (dt_txt,temp,weather,windNb) =>{
@@ -169,8 +169,168 @@ export const tagInfoday = (datalist) => {
     
     return table;
   }
+  //table for wind infos
+  export const windTab=(datalist)=>{
+    const dailyData = windInfos(datalist);
+    const table = document.createElement('table');
   
+    for (const date in dailyData) {
+      const data = dailyData[date];
     
+      table.classList.add('data-table');
+    
+      const tableHeader = document.createElement('thead');
+      const headerRow = document.createElement('tr');
+    
+      const headerDate = document.createElement('th');
+      headerDate.className ="tabHeaderDate";
+      headerDate.textContent = date;
+      headerDate.setAttribute('colspan', '4'); 
+    
+      headerRow.appendChild(headerDate);
+      tableHeader.appendChild(headerRow);
+      table.appendChild(tableHeader);
+    
+      const tableHeader2 = document.createElement('thead');
+      const headerRow2 = document.createElement('tr');
+     
+      const headerTime = document.createElement('th');
+      headerTime.textContent = 'Hour';
+    
+      const headerWindDegree = document.createElement('th');
+      headerWindDegree.textContent = 'Wind Degree (°)';
+    
+      const headerWindSpeed = document.createElement('th');
+      headerWindSpeed.textContent = 'Wind Speed (km/h)';
+
+      const headerWindGust  = document.createElement('th');
+      headerWindGust.textContent = 'Wind Gust (km/h)';
+    
+      headerRow2.append(headerTime);
+      headerRow2.append(headerWindDegree);
+      headerRow2.append(headerWindSpeed);
+      headerRow2.append(headerWindGust);
+
+    
+      tableHeader2.append(headerRow2);
+      table.append(tableHeader2);
+    
+     
+      const tableBody = document.createElement('tbody');
+    
+
+      for (let i = 0; i < data.length; i++) {
+        const rowData = data[i];
+    
+        const row = document.createElement('tr');
+    
+        const timeCell = document.createElement('td');
+        timeCell.textContent = rowData.time;
+    
+        const windDegreeCell = document.createElement('td');
+        windDegreeCell.textContent = rowData.windDegree;
+    
+        const windSpeedCell = document.createElement('td');
+        windSpeedCell.textContent = rowData.windSpeed;
+
+        const windGustCell = document.createElement('td');
+        windGustCell.textContent = rowData.windGust;
+    
+        row.append(timeCell);
+        row.append( windDegreeCell);
+        row.append(windSpeedCell);
+        row.append(windGustCell);
+
+    
+        tableBody.appendChild(row);
+      }
+    
+      table.appendChild(tableBody);
+    }
+    
+    return table;
+  }
+// table for precipitation and depression infos    
+export const depressionTab=(datalist)=>{
+  const dailyData = precipitation(datalist);
+  const table = document.createElement('table');
+
+  for (const date in dailyData) {
+    const data = dailyData[date];
+  
+    table.classList.add('data-table');
+  
+    const tableHeader = document.createElement('thead');
+    const headerRow = document.createElement('tr');
+  
+    const headerDate = document.createElement('th');
+    headerDate.className ="tabHeaderDate";
+    headerDate.textContent = date;
+    headerDate.setAttribute('colspan', '4'); 
+  
+    headerRow.appendChild(headerDate);
+    tableHeader.appendChild(headerRow);
+    table.appendChild(tableHeader);
+  
+    const tableHeader2 = document.createElement('thead');
+    const headerRow2 = document.createElement('tr');
+   
+    const headerTime = document.createElement('th');
+    headerTime.textContent = 'Hour';
+  
+    const headerPrecipitation = document.createElement('th');
+    headerPrecipitation.textContent = 'Precipitation (mm)';
+  
+    const headerHumidity= document.createElement('th');
+    headerHumidity.textContent = 'Humidity (%)';
+
+    const headerPressure  = document.createElement('th');
+    headerPressure.textContent = 'Pressure (hPa)';
+  
+    headerRow2.append(headerTime);
+    headerRow2.append(headerPrecipitation);
+    headerRow2.append(headerHumidity);
+    headerRow2.append(headerPressure);
+
+  
+    tableHeader2.append(headerRow2);
+    table.append(tableHeader2);
+  
+   
+    const tableBody = document.createElement('tbody');
+  
+
+    for (let i = 0; i < data.length; i++) {
+      const rowData = data[i];
+  
+      const row = document.createElement('tr');
+  
+      const timeCell = document.createElement('td');
+      timeCell.textContent = rowData.time;
+  
+      const rainCell = document.createElement('td');
+      rainCell.textContent = rowData.rain;
+  
+      const humidityCell = document.createElement('td');
+      humidityCell.textContent = rowData.humidity;
+
+      const pressureCell = document.createElement('td');
+      pressureCell.textContent = rowData.pressure;
+  
+      row.append(timeCell);
+      row.append(rainCell);
+      row.append(humidityCell);
+      row.append(pressureCell);
+
+  
+      tableBody.appendChild(row);
+    }
+  
+    table.appendChild(tableBody);
+  }
+  
+  return table;
+}
 
 export const coordData = (headerData,nam, pop, sunri, sunse ) =>{
     let headerDataLogos =document.createElement('div');
@@ -197,14 +357,14 @@ export const coordData = (headerData,nam, pop, sunri, sunse ) =>{
     let cityIcon =document.createElement('div');
     cityIcon.className="cityIcon";
     let cityImg = document.createElement('img')
-    cityImg.src ='location-icons.gif';
+    cityImg.src ='/asset/location-icons.gif';
     cityImg.className= "cityImg"
     cityIcon.append(cityImg);
 
     let visibilityIcon = document.createElement('div');
     visibilityIcon.className="visibilityIcon";
     let visibilityImg = document.createElement('img')
-    visibilityImg.src ='visi.svg';
+    visibilityImg.src ='/asset/visi.svg';
     visibilityImg.className= "visibilityImg"
     visibilityIcon.append(visibilityImg);
 
