@@ -15,6 +15,51 @@
     transform: rotate(359deg);
   }
 }
+@keyframes moonSwing {
+  0% {
+    -webkit-transform: rotate(125deg);
+    -moz-transform: rotate(125deg);
+    -ms-transform: rotate(125deg);
+    -o-transform: rotate(125deg);
+    transform: rotate(125deg);
+  }
+  50% {
+    -webkit-transform: rotate(135deg);
+    -moz-transform: rotate(135deg);
+    -ms-transform: rotate(135deg);
+    -o-transform: rotate(135deg);
+    transform: rotate(135deg);
+  }
+  100% {
+    -webkit-transform: rotate(125deg);
+    -moz-transform: rotate(125deg);
+    -ms-transform: rotate(125deg);
+    -o-transform: rotate(125deg);
+    transform: rotate(125deg);
+  }
+}
+@keyframes starFadeIn {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes starFadeOut {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 * {
   margin: 0;
   padding: 0;
@@ -40,7 +85,7 @@
     flex-direction: column;
     align-items: center;
     padding: 4vw;
-    height: 83vw;
+    height: 100vw;
     justify-content: space-between;
   }
   body header .topHeader {
@@ -74,16 +119,25 @@
     /* background-color: var(--search-bar-color); */
     border: none;
   }
-  body header #headerData {
+  body header #headerData .headerDataInfos {
     display: flex;
-    justify-content: space-around;
     width: 100vw;
+    padding: 0vw;
+    justify-content: space-around;
+    height: 16VW;
+    align-items: flex-end;
   }
-  body header #headerData .sunriseContainer .canvaIconContainer .sun {
-    width: 33px;
-    height: 33px;
-    position: absolute;
-    z-index: 1;
+  body header #headerData .headerDataLogos {
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+  }
+  body header #headerData .headerDataLogos .sunriseIcon {
+    margin-top: 9px;
+  }
+  body header #headerData .headerDataLogos .sunriseIcon .sun {
+    width: 28px;
+    height: 28px;
     background: -webkit-linear-gradient(#FEC601, #EA7317);
     background: -moz-linear-gradient(#FEC601, #EA7317);
     background: -ms-linear-gradient(#FEC601, #EA7317);
@@ -101,9 +155,9 @@
     -o-transform: rotate(20deg);
     transform: rotate(20deg);
   }
-  body header #headerData .sunriseContainer .canvaIconContainer .rays {
-    width: 33px;
-    height: 33px;
+  body header #headerData .headerDataLogos .sunriseIcon .rays {
+    width: 28px;
+    height: 28px;
     background: #FEC601;
     z-index: 0;
     position: absolute;
@@ -114,10 +168,10 @@
     transform: rotate(20deg);
     animation: sunRotate 10s infinite linear;
   }
-  body header #headerData .sunriseContainer .canvaIconContainer .rays:after {
+  body header #headerData .headerDataLogos .sunriseIcon .rays:after {
     content: "";
-    width: 33px;
-    height: 33px;
+    width: 28px;
+    height: 28px;
     background: #FEC601;
     z-index: 0;
     position: absolute;
@@ -126,6 +180,22 @@
     -ms-transform: rotate(40deg);
     -o-transform: rotate(40deg);
     transform: rotate(40deg);
+  }
+  body header #headerData .headerDataLogos .sunsetIcon .moon {
+    width: 33px;
+    height: 33px;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    -ms-border-radius: 50px;
+    -o-border-radius: 50px;
+    border-radius: 50px;
+    box-shadow: 10px 3px 0 0 #ECE4B7;
+    -webkit-transform: rotate(130deg);
+    -moz-transform: rotate(130deg);
+    -ms-transform: rotate(130deg);
+    -o-transform: rotate(130deg);
+    transform: rotate(130deg);
+    animation: moonSwing 3s infinite linear;
   }
   main {
     margin: 1vw;

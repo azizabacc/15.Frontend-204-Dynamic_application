@@ -17,10 +17,11 @@ fetch(forecastApi)
 .then(response => response.json())
 .then(data=> {
     let name = data.city.name;
-    let population = data.city.population.toString();
+    let population = data.list[0].visibility.toString();
     let sunrise = timestampConvertor(data.city.sunrise)
     let sunset = timestampConvertor(data.city.sunset)
-  
+ console.log(data);
+
     coordData(headerData,name,population,sunrise,sunset);
 
     header.append(headerData) 
@@ -34,7 +35,6 @@ fetch(forecastApi)
     } 
 
 
-    console.log(Object.values(averageTempByDay).length);
     for(let j=0;j<Object.values(averageTempByDay).length;j++){
         console.log(Object.keys(averageTempByDay)[j]);
         resumecardDisplayer.append(resumeDayCard(Object.keys(averageTempByDay)[j],Object.values(averageTempByDay)[j],Object.values(averageWindSpeedByDay)[j]));

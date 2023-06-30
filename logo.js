@@ -1,5 +1,5 @@
 export const sunLogo = (canvaIconContainer)=> {
-  canvaIconContainer.className="canvaIconContainer"
+
   let rays = document.createElement('div');
   rays.id = 'rays';
   rays.className = 'rays';
@@ -12,15 +12,17 @@ export const sunLogo = (canvaIconContainer)=> {
       
 
 }
-// still to do 
+
+
+// sunsset logo
 export const moonLogo = (canvaIconContainer)=> {
-  canvaIconContainer.className="canvaIconContainer"
-/*   <div id="star1" class="star"></div>
-  <div id="moon"></div>
-  <div id="star2" class="star"></div>
-  <div id="star3" class="star"></div> */
- 
-      
+
+let moon = document.createElement('div');
+moon.className ='moon';
+
+
+ canvaIconContainer.append(moon);
+
 
 }
 

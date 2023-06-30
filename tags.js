@@ -1,5 +1,5 @@
 import {  weatherFont, windFont, temperatureFont ,getDayName,infoPerDay } from './functions.js';
-import { sunLogo } from './logo.js';
+import { sunLogo ,moonLogo} from './logo.js';
 
 export const resumeCard = (dt_txt,temp,weather,windNb) =>{
     let resumeCardContainer = document.createElement('div')
@@ -171,30 +171,49 @@ export const tagInfoday = (datalist) => {
   }
   
     
+
 export const coordData = (headerData,nam, pop, sunri, sunse ) =>{
+    let headerDataLogos =document.createElement('div');
+    let headerDataInfos =document.createElement('div');
+    headerDataLogos.className ="headerDataLogos";
+    headerDataInfos.className ="headerDataInfos";
     headerData.innerHTML='';
+    headerDataInfos.innerHTML='';
+    headerDataLogos.innerHTML='';
     let name = document.createElement('div');
     name.innerText = nam;
     let population = document.createElement('div');
-    population.innerText = pop;
-
-    let sunriseContainer =document.createElement('div');
-    sunriseContainer.className="sunriseContainer"
-    let canvaIconContainer = document.createElement('div');
-    sunLogo(canvaIconContainer );
+    population.innerHTML = `Visibility<br>${pop}`;
     let sunrise =document.createElement('div');
-    sunrise.innerText = sunri ;
-    sunriseContainer.append(canvaIconContainer);
-    sunriseContainer.append(sunrise);
-
-    let sunsetContainer =document.createElement('div');
-    sunsetContainer.className="sunriseContainer";
+    sunrise.innerText = sunri.slice(10,16) ;
     let sunset =document.createElement('div');
-    sunset.innerText =sunse;
-    headerData.append(name);
-    headerData.append(population);
-    headerData.append(sunriseContainer);
-    headerData.append(sunset);
+    sunset.innerText =sunse.slice(10,16);
+    headerDataInfos.append(name);
+    headerDataInfos.append(population);
+    headerDataInfos.append(sunrise);
+    headerDataInfos.append(sunset);
+
+    let cityIcon =document.createElement('div');
+    cityIcon.className="cityIcon";
+
+    let populationIcon = document.createElement('div');
+    populationIcon.className="populationIcon";
+
+    let sunriseIcon =document.createElement('div');
+    sunriseIcon.className="sunriseIcon";
+    sunLogo(sunriseIcon );
+
+    let sunsetIcon =document.createElement('div');
+    sunsetIcon.className="sunsetIcon";
+    moonLogo(sunsetIcon);
+    headerDataLogos.append(cityIcon);
+    headerDataLogos.append(populationIcon);
+    headerDataLogos.append(sunriseIcon);
+    headerDataLogos.append(sunsetIcon);
+
+    headerData.append(headerDataLogos);
+    headerData.append(headerDataInfos);
+
     
     
 }

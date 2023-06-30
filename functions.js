@@ -22,7 +22,7 @@ export const timestampConvertor = (timestamp) =>{
         const dayIndex = date.getDay();
         return daysOfWeek[dayIndex];
       }
-
+//mean temperature and wind speed
       export const meanTemperature = (dataList,averageTempByDay,averageWindSpeedByDay ) => {
         const tempByDay = {};
         const windSpeedByDay = {};
@@ -55,9 +55,7 @@ export const timestampConvertor = (timestamp) =>{
             };
           }
         }
-/*       
-       const averageTempByDay = {};
-        const averageWindSpeedByDay = {};  */
+
       
         for (const date in tempByDay) {
           console.log("date "+date);

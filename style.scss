@@ -42,7 +42,21 @@ $nightDark: #BFADA3;
     -o-transform: rotate($degrees);
     transform: rotate($degrees);
   }
-
+  @mixin scale($points) {
+    -webkit-transform: scale($points);
+    -moz-transform: scale($points);
+    -ms-transform: scale($points);
+    -o-transform: scale($points);
+    transform: scale($points);
+  }
+  @mixin fadeIn($seconds) {
+    -webkit-animation: fadein $seconds;
+    -moz-animation: fadein $seconds;
+    -ms-animation: fadein $seconds;
+    -o-animation: fadein $seconds;
+    animation: fadein $seconds;
+  }
+  
  @keyframes sunRotate {
     from {
       @include rotate(0deg);
@@ -53,6 +67,39 @@ $nightDark: #BFADA3;
   }
 
 
+  @keyframes moonSwing {
+    0% {
+      @include rotate(125deg);
+    }
+    50% {
+      @include rotate(135deg);
+    }
+    100% {
+      @include rotate(125deg);
+    }
+  }
+  @keyframes starFadeIn {
+    0% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  @keyframes starFadeOut {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
 *{
     margin : 0;
     padding: 0;
@@ -76,8 +123,9 @@ background: radial-gradient(circle, rgba(84,190,251,1) 0%, rgba(51,101,138,1) 10
         flex-direction: column;
         align-items: center;
         padding: 4vw;
-        height: 83vw;
+        height: 100vw;
         justify-content: space-between;
+     
     
         .topHeader{
             display: flex;
@@ -112,20 +160,29 @@ background: radial-gradient(circle, rgba(84,190,251,1) 0%, rgba(51,101,138,1) 10
             }
 
         }
-
-          
   
         #headerData{
-            display: flex;
-            justify-content: space-around;
-            width: 100vw;
-            .sunriseContainer{
-                .canvaIconContainer{
+            .headerDataInfos{
+                display: flex;
+    width: 100vw;
+    padding: 0vw;
+    justify-content: space-around;
+    height: 16VW;
+    align-items: flex-end;
+            }
+            .headerDataLogos{
+                width: 100vw;
+                display: flex;
+                justify-content: space-between;
+                   
+                .sunriseIcon{
+                    margin-top: 9px;
+
                     .sun{    
-                        width: 33px;
-                        height: 33px;
-                        position: absolute;
-                        z-index: 1;
+                        width: 28px;
+                        height: 28px;
+                    
+                        
                         @include background($sunLight, $sunDark) ;
                         @include border-radius(50px) ;
                         animation: sunRotate 10s infinite linear;
@@ -133,8 +190,8 @@ background: radial-gradient(circle, rgba(84,190,251,1) 0%, rgba(51,101,138,1) 10
 
                     }
                     .rays {
-                        width: 33px;
-                        height: 33px;
+                        width: 28px;
+                        height: 28px;
                         background: $sunLight;
                         z-index: 0;
                         position: absolute;
@@ -144,15 +201,37 @@ background: radial-gradient(circle, rgba(84,190,251,1) 0%, rgba(51,101,138,1) 10
                       }
                       .rays:after {
                         content: "";
-                        width: 33px;
-                        height: 33px;
+                        width: 28px;
+                        height: 28px;
                         background: $sunLight;
                         z-index: 0;
                         position: absolute;
                         @include rotate(40deg);
                       }
                 
-            }}
+            }
+            .sunsetIcon{
+
+          .moon {
+            width: 33px;
+            height: 33px;
+            
+            @include border-radius(50px);
+        
+            box-shadow: 10px 3px 0 0 #ECE4B7;
+            @include rotate(130deg);
+            animation: moonSwing 3s infinite linear;
+            
+          }
+
+          
+        
+
+            }
+            }
+         
+            
+        
          
             }
 
