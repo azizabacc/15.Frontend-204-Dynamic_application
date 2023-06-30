@@ -1,5 +1,5 @@
 
-import { timestampConvertor , meanTemperature,infoPerDay} from './functions.js';
+import { timestampConvertor , meanTemperature,removeChild,infoPerDay} from './functions.js';
 import { coordData,resumeDayCard,resumeCard ,tagInfoday} from './tags.js';
 import { plot } from './plots.js';
 
@@ -21,27 +21,34 @@ fetch(forecastApi)
     let sunrise = timestampConvertor(data.city.sunrise)
     let sunset = timestampConvertor(data.city.sunset)
  console.log(data);
-
     coordData(headerData,name,population,sunrise,sunset);
+   if(header.querySelector("#headerData")){
+        header.removeChild(header.querySelector("#headerData"))
+        header.append(headerData) 
+        }else{
+        header.append(headerData) 
+        }
 
-    header.append(headerData) 
  
 
     for(let i=0; i<data.cnt; i++){
           meanTemperature(data.list,averageTempByDay,averageWindSpeedByDay);
-
+        console.log(data.list[i].main.grnd_level    );
   
        
     } 
-
-
+//remove previous card at city change
+while(resumecardDisplayer.firstChild){
+    resumecardDisplayer.removeChild(resumecardDisplayer.firstChild)
+}
     for(let j=0;j<Object.values(averageTempByDay).length;j++){
-        console.log(Object.keys(averageTempByDay)[j]);
         resumecardDisplayer.append(resumeDayCard(Object.keys(averageTempByDay)[j],Object.values(averageTempByDay)[j],Object.values(averageWindSpeedByDay)[j]));
 
     }
-
-  
+//clean  tableContainer when we look for an other city
+    while( tableContainer.firstChild){
+        tableContainer.removeChild( tableContainer.firstChild)
+    }
     tableContainer.append(tagInfoday(data.list));
     
 })
@@ -52,7 +59,7 @@ fetch(forecastApi)
 }
 //forecast weather api 
 export const forecast3hours = (lat,lon,resumecardDisplayer3hours,tempPlot,windPlot) =>{ 
-    let forecastApi = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&&units=metric&lang=english&appid=${apiKey}`;
+    let forecastApi = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&lang=english&appid=${apiKey}`;
 fetch(forecastApi)
 .then(response => response.json())
 .then(data=> {
@@ -64,7 +71,14 @@ fetch(forecastApi)
     let nowPrediction = document.createElement("div");
     nowPrediction.id="nowPrediction";
     nowPrediction.append(resumeCard(data.list[0].dt_txt,data.list[0].main.temp,data.list[0].weather[0].description,data.list[0].wind.speed))
-    main.prepend(nowPrediction)
+    if(main.querySelector("#nowPrediction")){
+        main.removeChild(main.querySelector("#nowPrediction"))
+        main.prepend(nowPrediction) 
+        }else{
+        main.prepend(nowPrediction) 
+        }
+   
+    //main.prepend(nowPrediction)
     for(let i=0; i<data.cnt; i++){
     
         //resumecardDisplayer3hours.append(resumeCard(data.list[i].dt_txt,data.list[i].main.temp,data.list[i].weather[0].description,data.list[i].wind.speed));

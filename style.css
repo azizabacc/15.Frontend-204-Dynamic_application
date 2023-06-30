@@ -71,8 +71,8 @@
     height: 100vh;
     width: 100vw;
     align-items: center;
-    background: rgb(84, 190, 251);
-    background: radial-gradient(circle, rgb(84, 190, 251) 0%, rgb(51, 101, 138) 100%);
+    /*     background: rgb(84,190,251);
+    background: radial-gradient(circle, rgba(84,190,251,1) 0%, rgba(51,101,138,1) 100%); */
   }
   body header {
     background: -webkit-linear-gradient(#55C1FF, #33658A);
@@ -131,6 +131,13 @@
     width: 100vw;
     display: flex;
     justify-content: space-between;
+  }
+  body header #headerData .headerDataLogos .cityIcon .cityImg {
+    width: 30px;
+    border-radius: 13px;
+  }
+  body header #headerData .headerDataLogos .visibilityIcon .visibilityImg {
+    width: 45px;
   }
   body header #headerData .headerDataLogos .sunriseIcon {
     margin-top: 9px;
@@ -324,7 +331,7 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    height: 39vh;
+    height: 54vh;
     justify-content: space-between;
     padding: 2vw;
   }
@@ -359,10 +366,104 @@
     display: flex;
     justify-content: space-around;
     width: 100vw;
-    height: 5vh;
+    height: 16vh;
+    /* align-items: center; */
+    flex-direction: column;
+  }
+  body header #headerData .headerDataLogos {
+    width: 100vw;
+    display: flex;
+    margin-left: 28px;
+    justify-content: space-around;
+  }
+  body header #headerData .headerDataLogos .visibilityIcon .visibilityImg {
+    width: 45px;
+    margin-left: 22px;
+  }
+  body header #headerData .headerDataLogos .sunriseIcon {
+    margin-top: 9px;
+  }
+  body header #headerData .headerDataLogos .sunriseIcon .sun {
+    width: 28px;
+    height: 28px;
+    background: -webkit-linear-gradient(#FEC601, #EA7317);
+    background: -moz-linear-gradient(#FEC601, #EA7317);
+    background: -ms-linear-gradient(#FEC601, #EA7317);
+    background: -o-linear-gradient(#FEC601, #EA7317);
+    background: linear-gradient(#FEC601, #EA7317);
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    -ms-border-radius: 50px;
+    -o-border-radius: 50px;
+    border-radius: 50px;
+    animation: sunRotate 10s infinite linear;
+    -webkit-transform: rotate(20deg);
+    -moz-transform: rotate(20deg);
+    -ms-transform: rotate(20deg);
+    -o-transform: rotate(20deg);
+    transform: rotate(20deg);
+  }
+  body header #headerData .headerDataLogos .sunriseIcon .rays {
+    width: 28px;
+    height: 28px;
+    background: #FEC601;
+    z-index: 0;
+    position: absolute;
+    -webkit-transform: rotate(20deg);
+    -moz-transform: rotate(20deg);
+    -ms-transform: rotate(20deg);
+    -o-transform: rotate(20deg);
+    transform: rotate(20deg);
+    animation: sunRotate 10s infinite linear;
+  }
+  body header #headerData .headerDataLogos .sunriseIcon .rays:after {
+    content: "";
+    width: 28px;
+    height: 28px;
+    background: #FEC601;
+    z-index: 0;
+    position: absolute;
+    -webkit-transform: rotate(40deg);
+    -moz-transform: rotate(40deg);
+    -ms-transform: rotate(40deg);
+    -o-transform: rotate(40deg);
+    transform: rotate(40deg);
+  }
+  body header #headerData .headerDataLogos .sunsetIcon {
+    margin-right: 7px;
+  }
+  body header #headerData .headerDataLogos .sunsetIcon .moon {
+    width: 33px;
+    height: 33px;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    -ms-border-radius: 50px;
+    -o-border-radius: 50px;
+    border-radius: 50px;
+    box-shadow: 10px 3px 0 0 #ECE4B7;
+    -webkit-transform: rotate(130deg);
+    -moz-transform: rotate(130deg);
+    -ms-transform: rotate(130deg);
+    -o-transform: rotate(130deg);
+    transform: rotate(130deg);
+    animation: moonSwing 3s infinite linear;
+  }
+  body header #headerData .headerDataInfos {
+    display: flex;
+    width: 100vw;
+    padding: 0vw;
+    height: 16VW;
     align-items: center;
+    justify-content: space-around;
+    font-size: 20px;
+    font-weight: bold;
   }
   body main {
+    background: -webkit-linear-gradient(#FFFFFF, #ECE4B7);
+    background: -moz-linear-gradient(#FFFFFF, #ECE4B7);
+    background: -ms-linear-gradient(#FFFFFF, #ECE4B7);
+    background: -o-linear-gradient(#FFFFFF, #ECE4B7);
+    background: linear-gradient(#FFFFFF, #ECE4B7);
     padding: 4vh;
     color: hsl(180, 5%, 19%);
     display: flex;

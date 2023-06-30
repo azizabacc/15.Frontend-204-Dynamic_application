@@ -58,7 +58,6 @@ export const timestampConvertor = (timestamp) =>{
 
       
         for (const date in tempByDay) {
-          console.log("date "+date);
 
           const averageTemp = (tempByDay[date].sum / tempByDay[date].count).toFixed(1);
           averageTempByDay[date] = averageTemp;
@@ -71,6 +70,8 @@ export const timestampConvertor = (timestamp) =>{
       
       
       }
+
+      
     export  const infoPerDay = (datalist) => {
         const dataByDay = {};
       
@@ -96,6 +97,31 @@ export const timestampConvertor = (timestamp) =>{
       
         return dataByDay;
       }
+/*       export  const windInfos = (datalist) => {
+        const dataByDay = {};
+      
+        for (let i = 0; i < datalist.length; i++) {
+          const dt_txt = datalist[i].dt_txt;
+          const windDegree = datalist[i].main.deg;
+          const windSpeed = datalist[i].wind.speed;
+          const windGust= datalist[i].weather[0].description
+          const date = dt_txt.slice(0, 10);
+          const time = dt_txt.slice(11, 16);
+      
+          if (!dataByDay[date]) {
+            dataByDay[date] = [];
+          }
+      
+          dataByDay[date].push({
+            time,
+            temp,
+            windSpeed,
+            weather,
+          });
+        }
+      
+        return dataByDay;
+      } */
   export  const weatherFont = (weather) =>{
         let font ='';
         switch(weather){
@@ -151,5 +177,15 @@ export const timestampConvertor = (timestamp) =>{
         }
         return font
     } 
+
+
+    export const removeChild=(oldchild,newchild,parent)=>{
+      if(child){
+        parent.removeChild(oldchild)
+        parent.append(newchild) 
+        }else{
+        parent.append(newchild) 
+        }
+    }
 
     

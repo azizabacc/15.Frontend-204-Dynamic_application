@@ -106,6 +106,8 @@ $nightDark: #BFADA3;
 
 }
 
+     
+
 @media screen and (max-width: 800px) {
 
       
@@ -114,8 +116,8 @@ body{
     height: 100vh;
     width: 100vw;
     align-items: center;
-    background: rgb(84,190,251);
-background: radial-gradient(circle, rgba(84,190,251,1) 0%, rgba(51,101,138,1) 100%);
+/*     background: rgb(84,190,251);
+background: radial-gradient(circle, rgba(84,190,251,1) 0%, rgba(51,101,138,1) 100%); */
     header{
         @include background($skyLight,$skyDark);
         color: hsl(0, 0%, 100%);
@@ -174,7 +176,17 @@ background: radial-gradient(circle, rgba(84,190,251,1) 0%, rgba(51,101,138,1) 10
                 width: 100vw;
                 display: flex;
                 justify-content: space-between;
-                   
+                .cityIcon{
+                  .cityImg{
+                    width: 30px;
+                    border-radius: 13px;
+                  }
+                }
+                .visibilityIcon{
+                  .visibilityImg{
+                    width: 45px;
+                  }
+                }
                 .sunriseIcon{
                     margin-top: 9px;
 
@@ -357,7 +369,7 @@ background: radial-gradient(circle, rgba(84,190,251,1) 0%, rgba(51,101,138,1) 10
             display: flex;
             align-items: center;
             flex-direction: column;
-            height: 39vh;
+            height: 54vh;
             justify-content: space-between;
             padding: 2vw;
             .topHeader{
@@ -393,18 +405,98 @@ background: radial-gradient(circle, rgba(84,190,251,1) 0%, rgba(51,101,138,1) 10
           
             }
             #headerData{
-                display: flex;
-                justify-content: space-around;
-                width: 100vw;
-                height: 5vh;
-        
-                align-items: center;
+              display: flex;
+              justify-content: space-around;
+              width: 100vw;
+              height: 16vh;
+              /* align-items: center; */
+              flex-direction: column;
    
+            
+            .headerDataLogos{
+              width: 100vw;
+              display: flex;
+              margin-left: 28px;
+              justify-content: space-around;
+                .visibilityIcon{
+                  .visibilityImg{
+                    
+                    width: 45px;
+                    margin-left: 22px;
+                  }
+                }
+                .sunriseIcon{
+                    margin-top: 9px;
+
+                    .sun{    
+                        width: 28px;
+                        height: 28px;
+                    
+                        
+                        @include background($sunLight, $sunDark) ;
+                        @include border-radius(50px) ;
+                        animation: sunRotate 10s infinite linear;
+                        @include rotate(20deg);
+
+                    }
+                    .rays {
+                        width: 28px;
+                        height: 28px;
+                        background: $sunLight;
+                        z-index: 0;
+                        position: absolute;
+
+                        @include rotate(20deg);
+                        animation: sunRotate 10s infinite linear;
+                      }
+                      .rays:after {
+                        content: "";
+                        width: 28px;
+                        height: 28px;
+                        background: $sunLight;
+                        z-index: 0;
+                        position: absolute;
+                        @include rotate(40deg);
+                      }
+                
+            }
+            .sunsetIcon{
+              margin-right: 7px;
+          .moon {
+            width: 33px;
+            height: 33px;
+            
+            @include border-radius(50px);
+        
+            box-shadow: 10px 3px 0 0 #ECE4B7;
+            @include rotate(130deg);
+            animation: moonSwing 3s infinite linear;
+            
+          }
+
+          
+        
+
+            }
+            }
+         
+            .headerDataInfos{
+              display: flex;
+              width: 100vw;
+              padding: 0vw;
+              height: 16VW;
+              align-items: center;
+              justify-content: space-around;
+              font-size: 20px;
+              font-weight: bold;
+            }
+        
+         
             }
 
         }
         main{
-            
+          @include background($white,$nightLight );
             padding: 4vh;
             color: $text-color;
             display: flex;
@@ -504,6 +596,6 @@ background: radial-gradient(circle, rgba(84,190,251,1) 0%, rgba(51,101,138,1) 10
             }}
     
     }
-    }
+  }
 
 

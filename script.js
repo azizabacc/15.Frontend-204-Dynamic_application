@@ -48,7 +48,9 @@ const searchEvent = () =>{
     fetch(geoApi)
     .then(response => response.json())
     .then(data=> {
-    
+     
+        citySelect.innerText="";
+        
         let lat = Object.values(data[0])[2];
         let lon = Object.values(data[0])[3];
         document.body.style.display='block';

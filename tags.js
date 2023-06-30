@@ -184,6 +184,7 @@ export const coordData = (headerData,nam, pop, sunri, sunse ) =>{
     name.innerText = nam;
     let population = document.createElement('div');
     population.innerHTML = `Visibility<br>${pop}`;
+    population.style.textAlign='center';
     let sunrise =document.createElement('div');
     sunrise.innerText = sunri.slice(10,16) ;
     let sunset =document.createElement('div');
@@ -195,9 +196,17 @@ export const coordData = (headerData,nam, pop, sunri, sunse ) =>{
 
     let cityIcon =document.createElement('div');
     cityIcon.className="cityIcon";
+    let cityImg = document.createElement('img')
+    cityImg.src ='location-icons.gif';
+    cityImg.className= "cityImg"
+    cityIcon.append(cityImg);
 
-    let populationIcon = document.createElement('div');
-    populationIcon.className="populationIcon";
+    let visibilityIcon = document.createElement('div');
+    visibilityIcon.className="visibilityIcon";
+    let visibilityImg = document.createElement('img')
+    visibilityImg.src ='visi.svg';
+    visibilityImg.className= "visibilityImg"
+    visibilityIcon.append(visibilityImg);
 
     let sunriseIcon =document.createElement('div');
     sunriseIcon.className="sunriseIcon";
@@ -206,8 +215,9 @@ export const coordData = (headerData,nam, pop, sunri, sunse ) =>{
     let sunsetIcon =document.createElement('div');
     sunsetIcon.className="sunsetIcon";
     moonLogo(sunsetIcon);
+
     headerDataLogos.append(cityIcon);
-    headerDataLogos.append(populationIcon);
+    headerDataLogos.append(visibilityIcon);
     headerDataLogos.append(sunriseIcon);
     headerDataLogos.append(sunsetIcon);
 
