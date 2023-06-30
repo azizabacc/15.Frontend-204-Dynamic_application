@@ -1,0 +1,109 @@
+ @mixin background($colour1, $colour2) {
+    background: -webkit-linear-gradient($colour1, $colour2);
+    background: -moz-linear-gradient($colour1, $colour2);
+    background: -ms-linear-gradient($colour1, $colour2);
+    background: -o-linear-gradient($colour1, $colour2);
+    background: linear-gradient($colour1, $colour2);
+ }
+  @mixin border-radius($radius) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -ms-border-radius: $radius;
+    -o-border-radius: $radius;
+    border-radius: $radius;
+  }
+  @mixin rotate($degrees) {
+    -webkit-transform: rotate($degrees);
+    -moz-transform: rotate($degrees);
+    -ms-transform: rotate($degrees);
+    -o-transform: rotate($degrees);
+    transform: rotate($degrees);
+  }
+
+  
+  $white: #FFFFFF;
+  $skyLight: #55C1FF;
+  $skyDark: #33658A;
+  $sunLight: #FEC601;
+  $sunDark: #EA7317;
+  $cloudLight: #DBE4EE;
+  $cloudDark: #A9BBCF;
+  $darkCloudLight: #90A7BF;
+  $darkCloudDark: #7792AF;
+  $raindrop: #0A81D1;
+  $nightLight: #ECE4B7;
+  $nightDark: #BFADA3;
+  
+/*   html {
+    @include background($skyLight, $skyDark);
+    min-height: 100%;
+  } */
+  
+ 
+  
+
+  
+
+  
+
+  
+          .rays {
+            background: $sunLight;
+            position: absolute;
+            z-index: 0;
+            @include rotate(20deg);
+            animation: sunRotate 10s infinite linear;
+          }
+          .rays:after {
+            content: "";
+            background: $sunLight;
+            position: absolute;
+            z-index: 0;
+            @include rotate(40deg);
+          }
+  
+          .sun {
+            display: relative;
+            @include background($sunLight, $sunDark);
+            @include border-radius(50px);
+            position: absolute;
+            z-index: 1;
+          }
+  
+         
+        
+  
+      
+    
+  
+  
+  #rays {
+    width: 100px;
+    height: 100px;
+    top: 35px;
+    left: 25px;
+  }
+  #rays:after {
+    height: 100px;
+    width: 100px;
+    top: 0px;
+    left: 0px;
+  }
+  #sun {
+    width: 100px;
+    height: 100px;
+    top: 35px;
+    left: 25px;
+  }
+
+ 
+  
+  @keyframes sunRotate {
+    from {
+      @include rotate(0deg);
+    }
+    to {
+      @include rotate(359deg);
+    }
+  }
+
