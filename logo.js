@@ -50,27 +50,28 @@ function drawLogo() {
   ctxArray.forEach((ctx) => {
     // delete canvas
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-
-    // sun
-    ctx.fillStyle = '#FFD700';
-    ctx.beginPath();
-    ctx.arc(ctx.canvas.width / 2 + sunPosition, ctx.canvas.height / 2, 40, 0, Math.PI * 2);
-    ctx.fill();
-
+      // sun
+      ctx.fillStyle = '#e78109';
+      ctx.beginPath();
+      ctx.arc(ctx.canvas.width / 2 + sunPosition, ctx.canvas.height / 2, 40, 0, Math.PI * 2);
+      ctx.fill();
     // clouds
-    ctx.fillStyle = '#87CEEB';
+    ctx.fillStyle = '#f6f4f3';
     ctx.beginPath();
     ctx.arc(ctx.canvas.width / 2 - 40 + cloudPosition, ctx.canvas.height / 2 - 10, 30, 0, Math.PI * 2);
     ctx.arc(ctx.canvas.width / 2 + 40 + cloudPosition, ctx.canvas.height / 2 - 10, 30, 0, Math.PI * 2);
     ctx.arc(ctx.canvas.width / 2 + cloudPosition, ctx.canvas.height / 2 - 30, 40, 0, Math.PI * 2);
     ctx.fill();
 
-    ctx.fillStyle = '#7c9ca8';
+
+
+    ctx.fillStyle = '#cac9c5';
     ctx.beginPath();
-    ctx.arc(ctx.canvas.width / 2 - 40 + cloudPosition2, ctx.canvas.height / 2 - 5, 30, 0, Math.PI * 2);
-    ctx.arc(ctx.canvas.width / 2 + 40 + cloudPosition2, ctx.canvas.height / 2 - 5, 30, 0, Math.PI * 2);
-    ctx.arc(ctx.canvas.width / 2 + cloudPosition2, ctx.canvas.height / 2 - 5, 40, 0, Math.PI * 2);
+    ctx.arc(ctx.canvas.width / 2 - 30 + cloudPosition2, ctx.canvas.height / 2 - 5, 20, 0, Math.PI * 2);
+    ctx.arc(ctx.canvas.width / 2 + 30 + cloudPosition2, ctx.canvas.height / 2 - 5, 30, 0, Math.PI * 2);
+    ctx.arc(ctx.canvas.width / 2 + cloudPosition2, ctx.canvas.height / 2 - 5, 30, 0, Math.PI * 2);
     ctx.fill();
+  
   });
 
   // update positions

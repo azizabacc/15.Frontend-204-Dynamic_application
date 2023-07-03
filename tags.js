@@ -15,7 +15,7 @@ export const resumeCard = (dt_txt,temp,weather,windNb) =>{
     dateHour.append(hour);
 
     let tempContainer = document.createElement('div')
-tempContainer.className = "tempContainerResumeCard"
+tempContainer.className = "tempContainerResumeCard subDiv"
     let temperature = document.createElement('div')
     temperature.textContent=temp.toString()+' °C';
     let tempFont = document.createElement('div')
@@ -24,7 +24,7 @@ tempContainer.className = "tempContainerResumeCard"
     tempContainer.append(tempFont);
 
     let weatherContainer = document.createElement('div');
-    weatherContainer.className="weatherContainerResumeCard";
+    weatherContainer.className="weatherContainerResumeCard subDiv";
     let weatherDesc = document.createElement('div');
     weatherDesc.textContent = weather;
     let weathFont = document.createElement('div');
@@ -33,7 +33,7 @@ tempContainer.className = "tempContainerResumeCard"
     weatherContainer.append(weathFont);
 
     let windContainer =  document.createElement('div');
-    windContainer.className ="windContainerResumeCard"
+    windContainer.className ="windContainerResumeCard subDiv"
     let windDesc =  document.createElement('div');
     windDesc.textContent=windNb.toString();
     let winFont =  document.createElement('div');

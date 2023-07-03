@@ -1,9 +1,12 @@
 
 import { timestampConvertor , meanTemperature,removeChild,infoPerDay} from './functions.js';
 import { coordData,resumeDayCard,resumeCard ,tagInfoday,windTab, depressionTab} from './tags.js';
-import { plot } from './plots.js';
-
-const apiKey ="0ecda526c9c0b753226bce63f940887d"
+import { error } from './min_max_temp.js';
+import { plot, plotErrorBar } from './plots.js';
+import { config } from './config.js';
+/* 
+const apiKey ="0ecda526c9c0b753226bce63f940887d" */
+const apiKey = config.MY_KEY;
 let main = document.querySelector('main');
 let header = document.querySelector('header');
 let tableContainer1 = document.querySelector('#tab1');
@@ -64,7 +67,7 @@ while(resumecardDisplayer.firstChild){
             tableContainer3.removeChild( tableContainer3.firstChild)
         }
         tableContainer3.append(depressionTab(data.list));
-
+console.log(tableContainer1.className);
 })
 
 .catch(error => {
@@ -82,7 +85,10 @@ fetch(forecastApi)
     
     let xdateHour= [];
     let ytemp = [];
+    let errorTemp =[]
     let ywind = [];
+    let yhumidity =[];
+    let yprecipitation = []
     let nowPrediction = document.createElement("div");
     nowPrediction.id="nowPrediction";
     nowPrediction.append(resumeCard(data.list[0].dt_txt,data.list[0].main.temp,data.list[0].weather[0].description,data.list[0].wind.speed))
@@ -93,22 +99,24 @@ fetch(forecastApi)
         main.prepend(nowPrediction) 
         }
    
+
     //main.prepend(nowPrediction)
     for(let i=0; i<data.cnt; i++){
     
         //resumecardDisplayer3hours.append(resumeCard(data.list[i].dt_txt,data.list[i].main.temp,data.list[i].weather[0].description,data.list[i].wind.speed));
-        
+   
         xdateHour.push(data.list[i].dt_txt);
         ytemp.push(data.list[i].main.temp);
+        errorTemp.push(data.list[i].main.temp_max-data.list[i].main.temp_min)
         ywind.push(data.list[i].wind.speed);
+        yhumidity.push(data.list[i].main.humidity);
+        console.log(errorTemp);
        
     } 
 
-
-
-    plot(xdateHour,ytemp,'tempPlot','blue','Temperature Forecasts','Time','Temperature in °C')
+    plotErrorBar(xdateHour,ytemp,errorTemp,'tempPlot','Temperature Forecasts','Time','Temperature in °C')
     plot(xdateHour,ywind,'windPlot','red','Wind Forecasts','Time','Wind Speed in km/h')
-  
+    plot(xdateHour,yhumidity,'humidityPlot','green','Humidity Forecasts','Time','Humidity in %')
 
     
 })
@@ -117,3 +125,5 @@ fetch(forecastApi)
 });
 
 }
+
+

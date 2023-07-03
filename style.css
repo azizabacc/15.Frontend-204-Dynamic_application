@@ -67,26 +67,21 @@
 
 @media screen and (max-width: 800px) {
   body {
-    display: flex;
-    height: 100vh;
-    width: 100vw;
-    align-items: center;
-    /*     background: rgb(84,190,251);
-    background: radial-gradient(circle, rgba(84,190,251,1) 0%, rgba(51,101,138,1) 100%); */
+    background-color: #23282A;
   }
   body header {
-    background: -webkit-linear-gradient(#55C1FF, #33658A);
-    background: -moz-linear-gradient(#55C1FF, #33658A);
-    background: -ms-linear-gradient(#55C1FF, #33658A);
-    background: -o-linear-gradient(#55C1FF, #33658A);
-    background: linear-gradient(#55C1FF, #33658A);
+    background: -webkit-linear-gradient(#222729, #4b535a);
+    background: -moz-linear-gradient(#222729, #4b535a);
+    background: -ms-linear-gradient(#222729, #4b535a);
+    background: -o-linear-gradient(#222729, #4b535a);
+    background: linear-gradient(#222729, #4b535a);
     color: hsl(0, 0%, 100%);
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 4vw;
-    height: 100vw;
-    justify-content: space-between;
+    height: 100vh;
+    justify-content: space-around;
   }
   body header .topHeader {
     display: flex;
@@ -119,22 +114,33 @@
     /* background-color: var(--search-bar-color); */
     border: none;
   }
+  body header #inputContainer #submitCity {
+    font-size: 3rem;
+    cursor: pointer;
+  }
+  body header #inputContainer #submitCity:hover {
+    color: #EA7317;
+  }
   body header #headerData .headerDataInfos {
     display: flex;
     width: 100vw;
     padding: 0vw;
     justify-content: space-around;
     height: 16VW;
-    align-items: flex-end;
+    align-items: center;
+    font-size: 22px;
+    font-weight: bold;
   }
   body header #headerData .headerDataLogos {
     width: 100vw;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
   }
   body header #headerData .headerDataLogos .cityIcon .cityImg {
-    width: 30px;
-    border-radius: 13px;
+    width: 32px;
+    border-radius: 18px;
+    margin-top: 9px;
+    margin-left: 5vw;
   }
   body header #headerData .headerDataLogos .visibilityIcon .visibilityImg {
     width: 45px;
@@ -205,12 +211,14 @@
     animation: moonSwing 3s infinite linear;
   }
   main {
+    font-family: sans-serif;
     margin: 1vw;
-    background: -webkit-linear-gradient(#FFFFFF, #ECE4B7);
-    background: -moz-linear-gradient(#FFFFFF, #ECE4B7);
-    background: -ms-linear-gradient(#FFFFFF, #ECE4B7);
-    background: -o-linear-gradient(#FFFFFF, #ECE4B7);
-    background: linear-gradient(#FFFFFF, #ECE4B7);
+  }
+  main.hidden {
+    display: none;
+  }
+  main .plots.plotHidden {
+    display: none;
   }
   main #nowPrediction {
     padding: 2vw;
@@ -228,7 +236,7 @@
     justify-content: space-between;
   }
   main #nowPrediction .dateHourResumeCard h1 {
-    color: #33658A;
+    color: #222729;
   }
   main #nowPrediction .dateHourResumeCard h2 {
     color: #7792AF;
@@ -258,19 +266,20 @@
     color: #4e61cd;
     margin: 15px 0;
     font-style: italic;
+    cursor: pointer;
+  }
+  main .titleSection:hover {
+    color: #EA7317;
   }
   main #resumecardDisplayer {
     padding: 2vw;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    -ms-border-radius: 5px;
-    -o-border-radius: 5px;
-    border-radius: 5px;
-    background-color: #A9BBCF;
     height: 150vw;
+  }
+  main #resumecardDisplayer.resumecardDisplayerhidden {
+    display: none;
   }
   main #resumecardDisplayer .resumeCardContainer {
     background-color: #DBE4EE;
@@ -303,36 +312,76 @@
     justify-content: space-between;
     font-size: 19px;
   }
-  .data-table {
+  .tableDiv {
+    font-family: sans-serif;
+    padding: 4vh;
+    display: none;
+    padding-top: 0px;
+    padding-left: 0px;
+    margin-left: 1vw;
+  }
+  .tableDiv .titleSection {
+    color: #4e61cd;
+    margin: 15px 0;
+    font-style: italic;
+    cursor: pointer;
+  }
+  .tableDiv .titleSection:hover {
+    color: #EA7317;
+  }
+  .tableDiv .tableMenuBtns {
+    display: flex;
+    font-size: 20px;
+    font-weight: bold;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+  .tableDiv .tableMenuBtns .tableBtn {
+    border: 3px solid white;
+    padding: 1.7vw;
+    border-radius: 12px;
+    background-color: #23282A;
+    color: rgba(255, 255, 255, 0.8);
+    width: 72%;
+    text-align: center;
+  }
+  .tableDiv .tableMenuBtns .tableBtn:hover {
+    transform: scale(1.1);
+  }
+  .tableDiv .tables .table {
+    display: none;
+  }
+  .tableDiv .tables .table.visible {
+    display: block;
+  }
+  .tableDiv .tables .table .data-table {
     width: 100%;
-    background-color: #EA7317;
+    background-color: #DBE4EE;
     text-align: center;
     border-collapse: collapse;
   }
-  .data-table th, .data-table td {
+  .tableDiv .tables .table .data-table th, .tableDiv .tables .table .data-table td {
     padding: 5px;
     font-size: 12px;
   }
 }
 @media screen and (min-width: 800px) {
   body {
-    display: flex;
-    height: 100vh;
-    width: 100vw;
-    align-items: center;
+    background-color: #23282A;
   }
   body header {
-    background: -webkit-linear-gradient(#55C1FF, #33658A);
-    background: -moz-linear-gradient(#55C1FF, #33658A);
-    background: -ms-linear-gradient(#55C1FF, #33658A);
-    background: -o-linear-gradient(#55C1FF, #33658A);
-    background: linear-gradient(#55C1FF, #33658A);
+    background: -webkit-linear-gradient(#4b535a, #222729);
+    background: -moz-linear-gradient(#4b535a, #222729);
+    background: -ms-linear-gradient(#4b535a, #222729);
+    background: -o-linear-gradient(#4b535a, #222729);
+    background: linear-gradient(#4b535a, #222729);
     color: hsl(0, 0%, 100%);
     display: flex;
     align-items: center;
     flex-direction: column;
-    height: 54vh;
-    justify-content: space-between;
+    height: 100vh;
+    justify-content: space-around;
     padding: 2vw;
   }
   body header .topHeader {
@@ -345,6 +394,7 @@
   }
   body header .siteSitation {
     font-style: italic;
+    font-size: larger;
   }
   body header #inputContainer {
     display: flex;
@@ -361,6 +411,10 @@
   }
   body header #inputContainer #submitCity {
     font-size: 3rem;
+    cursor: pointer;
+  }
+  body header #inputContainer #submitCity:hover {
+    color: #EA7317;
   }
   body header #headerData {
     display: flex;
@@ -375,6 +429,11 @@
     display: flex;
     margin-left: 28px;
     justify-content: space-around;
+  }
+  body header #headerData .headerDataLogos .cityIcon .cityImg {
+    width: 32px;
+    border-radius: 18px;
+    margin-top: 9px;
   }
   body header #headerData .headerDataLogos .visibilityIcon .visibilityImg {
     width: 45px;
@@ -459,19 +518,25 @@
     font-weight: bold;
   }
   body main {
-    background: -webkit-linear-gradient(#FFFFFF, #ECE4B7);
-    background: -moz-linear-gradient(#FFFFFF, #ECE4B7);
-    background: -ms-linear-gradient(#FFFFFF, #ECE4B7);
-    background: -o-linear-gradient(#FFFFFF, #ECE4B7);
-    background: linear-gradient(#FFFFFF, #ECE4B7);
+    font-family: sans-serif;
+    padding-bottom: 0px;
     padding: 4vh;
     color: hsl(180, 5%, 19%);
     display: flex;
     justify-content: space-between;
     flex-direction: column;
   }
+  body main.hidden {
+    display: none;
+  }
+  body main .plots.plotHidden {
+    display: none;
+  }
+  body main .plots .plot {
+    width: 100%;
+  }
   body main #nowPrediction {
-    padding: 2vw;
+    padding: 4vw;
     border: solid #607D8B;
     background-color: #efeeeb;
     -webkit-border-radius: 5px;
@@ -486,49 +551,39 @@
     justify-content: space-between;
   }
   body main #nowPrediction .dateHourResumeCard h1 {
-    color: #33658A;
+    color: #222729;
+    font-size: 60px;
   }
   body main #nowPrediction .dateHourResumeCard h2 {
+    font-size: 60px;
     color: #7792AF;
   }
-  body main #nowPrediction .tempContainerResumeCard {
+  body main #nowPrediction .subDiv {
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
+    justify-content: space-between;
     font-size: 26px;
-    font-weight: bold;
-  }
-  body main #nowPrediction .weatherContainerResumeCard {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    font-size: 26px;
-    font-weight: bold;
-  }
-  body main #nowPrediction .windContainerResumeCard {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    font-size: 26px;
-    font-weight: bold;
+    width: 44%;
+    margin-left: 28%;
   }
   body main .titleSection {
     color: #4e61cd;
     margin: 15px 0;
     font-style: italic;
     font-size: 3vw;
+    cursor: pointer;
+  }
+  body main .titleSection:hover {
+    color: #EA7317;
   }
   body main #resumecardDisplayer {
     padding: 2vw;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    -ms-border-radius: 5px;
-    -o-border-radius: 5px;
-    border-radius: 5px;
-    background-color: #A9BBCF;
+  }
+  body main #resumecardDisplayer.resumecardDisplayerhidden {
+    display: none;
   }
   body main #resumecardDisplayer .resumeCardContainer {
     background-color: #DBE4EE;
@@ -552,41 +607,58 @@
     display: flex;
   }
   body .tableDiv {
+    font-family: sans-serif;
     padding: 4vh;
+    padding-top: 0px;
+    display: none;
   }
   body .tableDiv .titleSection {
     color: #4e61cd;
     margin: 15px 0;
     font-style: italic;
     font-size: 3vw;
+    cursor: pointer;
+  }
+  body .tableDiv .titleSection:hover {
+    color: #EA7317;
   }
   body .tableDiv .tableMenuBtns {
     display: flex;
     justify-content: space-around;
     font-size: 20px;
     font-weight: bold;
-    background-color: #FF9800;
-    padding: 2vw;
+    margin: 3vw;
   }
   body .tableDiv .tableMenuBtns .tableBtn {
     border: 3px solid white;
     padding: 1.7vw;
-    border-radius: 5px;
+    border-radius: 12px;
+    background-color: #23282A;
+    color: rgba(255, 255, 255, 0.8);
   }
-  body .tableDiv .data-table {
+  body .tableDiv .tableMenuBtns .tableBtn:hover {
+    transform: scale(1.1);
+  }
+  body .tableDiv .tables .table {
+    display: none;
+  }
+  body .tableDiv .tables .table.visible {
+    display: block;
+  }
+  body .tableDiv .tables .table .data-table {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
     text-align: center;
   }
-  body .tableDiv .data-table .tabHeaderDate {
+  body .tableDiv .tables .table .data-table .tabHeaderDate {
     font-size: 25px;
   }
-  body .tableDiv .data-table th, body .tableDiv .data-table td {
+  body .tableDiv .tables .table .data-table th, body .tableDiv .tables .table .data-table td {
     padding: 8px;
     border-bottom: 1px solid #ddd;
   }
-  body .tableDiv .data-table th {
+  body .tableDiv .tables .table .data-table th {
     background-color: #f2f2f2;
   }
 }

@@ -1,18 +1,18 @@
 // timestamp Convertor function 
 export const timestampConvertor = (timestamp) =>{
-    const sunrise = new Date(timestamp * 1000); // Convert to milliseconds
+    const timeSecond = new Date(timestamp * 1000); // Convert to milliseconds
     // Get the components of the sunrise time
-    const year = sunrise.getUTCFullYear();
-    const month = sunrise.getUTCMonth() + 1; 
-    const day = sunrise.getUTCDate();
-    const hours = sunrise.getUTCHours();
-    const minutes = sunrise.getUTCMinutes();
-    const seconds = sunrise.getUTCSeconds();
+    const year = timeSecond.getUTCFullYear();
+    const month = timeSecond.getUTCMonth() + 1; 
+    const day = timeSecond.getUTCDate();
+    const hours = timeSecond.getUTCHours();
+    const minutes = timeSecond.getUTCMinutes();
+    const seconds = timeSecond.getUTCSeconds();
     
     // Create a formatted string for the sunrise time
-    const sunriseTime = `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')} ${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    const time = `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')} ${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
     
-    return sunriseTime  
+    return time  
   
     }
 
