@@ -1,18 +1,18 @@
 // timestamp Convertor function 
 export const timestampConvertor = (timestamp) =>{
-    const sunrise = new Date(timestamp * 1000); // Convert to milliseconds
+    const timeSecond = new Date(timestamp * 1000); // Convert to milliseconds
     // Get the components of the sunrise time
-    const year = sunrise.getUTCFullYear();
-    const month = sunrise.getUTCMonth() + 1; 
-    const day = sunrise.getUTCDate();
-    const hours = sunrise.getUTCHours();
-    const minutes = sunrise.getUTCMinutes();
-    const seconds = sunrise.getUTCSeconds();
+    const year = timeSecond.getUTCFullYear();
+    const month = timeSecond.getUTCMonth() + 1; 
+    const day = timeSecond.getUTCDate();
+    const hours = timeSecond.getUTCHours();
+    const minutes = timeSecond.getUTCMinutes();
+    const seconds = timeSecond.getUTCSeconds();
     
     // Create a formatted string for the sunrise time
-    const sunriseTime = `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')} ${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    const time = `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')} ${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
     
-    return sunriseTime  
+    return time  
   
     }
 
@@ -58,7 +58,6 @@ export const timestampConvertor = (timestamp) =>{
 
       
         for (const date in tempByDay) {
-          console.log("date "+date);
 
           const averageTemp = (tempByDay[date].sum / tempByDay[date].count).toFixed(1);
           averageTempByDay[date] = averageTemp;
@@ -71,6 +70,8 @@ export const timestampConvertor = (timestamp) =>{
       
       
       }
+
+      
     export  const infoPerDay = (datalist) => {
         const dataByDay = {};
       
@@ -95,6 +96,58 @@ export const timestampConvertor = (timestamp) =>{
         }
       
         return dataByDay;
+      }
+       export  const windInfos = (datalist) => {
+        const windInfos = {};
+      
+        for (let i = 0; i < datalist.length; i++) {
+          const dt_txt = datalist[i].dt_txt;
+          const windDegree = datalist[i].wind.deg;
+          const windGust= datalist[i].wind.gust
+          const windSpeed = datalist[i].wind.speed;
+          const date = dt_txt.slice(0, 10);
+          const time = dt_txt.slice(11, 16);
+      
+          if (!windInfos[date]) {
+            windInfos[date] = [];
+          }
+      
+          windInfos[date].push({
+            time,
+            windDegree,
+            windSpeed,
+            windGust,
+            
+          });
+        }
+      
+        return windInfos;
+      } 
+      export const precipitation=(datalist)=>{
+        const pecipitationInfos = {};
+      const nb = 3;
+      const rainValue = nb.toString()+"h";
+        for (let i = 0; i < datalist.length; i++) {
+          let rain = datalist[i].rain?.[rainValue] ?? 0;
+          const dt_txt = datalist[i].dt_txt;
+          const date = dt_txt.slice(0, 10);
+          const time = dt_txt.slice(11, 16);
+          const humidity = datalist[i].main.humidity;
+          const pressure = datalist[i].main.pressure;
+          if (!pecipitationInfos[date]) {
+            pecipitationInfos[date] = [];
+          }
+      
+          pecipitationInfos[date].push({
+            time,
+            rain,
+            humidity,
+            pressure,
+            
+          });
+        }
+      
+        return pecipitationInfos;
       }
   export  const weatherFont = (weather) =>{
         let font ='';
@@ -151,5 +204,15 @@ export const timestampConvertor = (timestamp) =>{
         }
         return font
     } 
+
+
+    export const removeChild=(oldchild,newchild,parent)=>{
+      if(child){
+        parent.removeChild(oldchild)
+        parent.append(newchild) 
+        }else{
+        parent.append(newchild) 
+        }
+    }
 
     

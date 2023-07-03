@@ -1,7 +1,3 @@
 tash.js
-currentWeather.js
 ISO-3166.json
-icons.html
-icons.scss
-icons.css.map
-icons.css
+config.js
